@@ -1,0 +1,28 @@
+.my-account {
+  background-color: var(--color-primary);
+  font-size: 20px;
+  font-weight: 600;
+  color: #fff;
+  border-radius: 6px 6px 0 0;
+  line-height: 2;
+}
+.custom {
+  color: var(--color-primary);
+}
+.data {
+  padding-left: 1rem;
+  line-height: 2.5rem;
+  cursor: pointer;
+}
+.data:hover {
+  color: var(--color-primary);
+}
+.data a {
+  color: var(--color-default);
+}
+.data a:hover {
+  color: var(--color-primary);
+}
+.active {
+  color: var(--color-primary);
+}

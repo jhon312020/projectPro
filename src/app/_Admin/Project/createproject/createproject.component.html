@@ -1,0 +1,7 @@
+<div class="shadow cus-table mb-4">
+  <div class="form-heading">
+    <h3>{{Heading}}</h3>
+    <p>{{content}}</p>
+  </div>
+  <app-project-form *ngIf="data" [Data]="data" (sendRes)="receiveRes($event)"></app-project-form>
+</div>

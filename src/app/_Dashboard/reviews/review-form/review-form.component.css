@@ -1,0 +1,225 @@
+.rate {
+    float: left;
+    height: 46px;
+/*    padding: 0 10px;*/
+}
+.rate:not(:checked) > input {
+    position:absolute;
+    top:-9999px;
+}
+.rate:not(:checked) > label {
+    float:right;
+    width:1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:30px;
+    color:#aaa;
+}
+.rate:not(:checked) > label:before {
+    content: '★ ';
+}
+.rate > input:checked ~ label {
+  color: var(--color-secondary);  
+}
+.rate:not(:checked) > label:hover,
+.rate:not(:checked) > label:hover ~ label {
+  color: var(--color-primary);
+
+}
+.rate > input:checked + label:hover,
+.rate > input:checked + label:hover ~ label,
+.rate > input:checked ~ label:hover,
+.rate > input:checked ~ label:hover ~ label,
+.rate > label:hover ~ input:checked ~ label {
+  color: var(--color-primary);
+}
+
+.clear {
+	clear: both;
+}
+.is-invalid {
+	border: 1px solid #dc3545;
+}
+
+
+
+
+
+/*.rating-stars {
+	display: block;
+	width: 30vmin;
+	padding: 1vmin 5vmin 1vmin 1vmin;
+	background: linear-gradient(90deg, #98989890 40vmin, #fff0 40vmin 100%);
+	border-radius: 5vmin;
+	position: relative;
+	margin-left: 1px;
+}
+
+.rating-counter {
+	font-size: 3.5vmin;
+    font-family: Arial, Helvetica, serif;
+    color: #fff;
+    width: 5vmin;
+    text-align: center;
+    background: #A1A1A1;
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    border-radius: 0 5vmin 5vmin 0;
+    line-height: 6vmin;
+}
+
+.rating-counter:before {
+	content: "0";
+	transition: all 0.25s ease 0s;	
+}
+
+#rating-container input { display: none; }
+
+#rating-container label {
+	width: 3vmin;
+	height: 3vmin;
+	background: #000b;
+	display: inline-flex;
+	cursor: pointer;
+	margin: 0.5vmin 0.65vmin;
+	transition: all 1s ease 0s;	
+	clip-path: polygon(50% 0%, 66% 32%, 100% 38%, 78% 64%, 83% 100%, 50% 83%, 17% 100%, 22% 64%, 0 38%, 34% 32%);
+}
+
+#rating-container label[for=rs0] {
+	display: none;
+}
+
+#rating-container label:before {
+	width: 90%;
+	height: 90%;
+	content: "";
+	background: orange;
+	z-index: -1;
+	display: block;
+	margin-left: 5%;
+	margin-top: 5%;
+	clip-path: polygon(50% 0%, 66% 32%, 100% 38%, 78% 64%, 83% 100%, 50% 83%, 17% 100%, 22% 64%, 0 38%, 34% 32%);
+	background: linear-gradient(90deg, #C0A7CE, #9F3A97 30% 50%, #fff 50%, 70%, #fff 100%);
+	background-size: 205% 100%;
+	background-position: 0 0;
+}
+
+#rating-container label:hover:before {
+	transition: all 0.25s ease 0s;		
+}
+
+#rating-container input:checked + label ~ label:before {
+	background-position: 100% 0;
+	transition: all 0.25s ease 0s;	
+}
+
+#rating-container input:checked + label ~ label:hover:before {
+	background-position: 0% 0
+}
+
+
+#rs1:checked ~ .rating-counter:before {
+	content: "1";
+}
+
+#rs2:checked ~ .rating-counter:before {
+	content: "2";
+}
+
+#rs3:checked ~ .rating-counter:before {
+	content: "3";
+}
+
+#rs4:checked ~ .rating-counter:before {
+	content: "4";
+}
+
+#rs5:checked ~ .rating-counter:before {
+	content: "5";
+}
+
+#rating-container label + input:checked ~ .rating-counter:before {
+	color: #9F3A97 !important;
+	transition: all 0.25s ease 0s;
+}
+
+
+#rating-container label:hover ~ .rating-counter:before {
+	color: #9F3A97 !important;
+	transition: all 0.5s ease 0s;	
+	animation: pulse 1s ease 0s infinite;
+}
+
+@keyframes pulse {
+	  50% { font-size: 5.25vmin; }
+}
+
+#rating-container label[for=rs1]:hover ~ .rating-counter:before {
+	content: "1" !important;
+}
+
+#rating-container label[for=rs2]:hover ~ .rating-counter:before {
+	content: "2" !important;
+}
+
+#rating-container label[for=rs3]:hover ~ .rating-counter:before {
+	content: "3" !important;
+}
+
+#rating-container label[for=rs4]:hover ~ .rating-counter:before {
+	content: "4" !important;
+}
+
+#rating-container label[for=rs5]:hover ~ .rating-counter:before {
+	content: "5" !important;
+}
+
+
+#rating-container input:checked:hover ~ .rating-counter:before {
+	animation: none !important;
+	color: #ffab00 !important ;
+}*/
+
+
+
+
+
+
+
+
+/*** INITIAL ANIMATION - Not Necessary ***/
+/*** I want to make a loop here ***/
+/*
+label + input + label:before {
+    animation: start 0.5s ease 0s 1;
+}
+
+.rating-stars:hover label + input + label:before {
+    animation: none;
+}
+
+label[for=rs2]:before {
+	animation-delay: 0.1s;
+}
+
+label[for=rs3]:before {
+	animation-delay: 0.2s;
+}
+
+label[for=rs4]:before {
+	animation-delay: 0.3s;
+}
+
+label[for=rs5]:before {
+	animation-delay: 0.4s;
+}
+
+@keyframes start {
+	10%, 90% { background-position: 0% 0; }
+}
+
+*/

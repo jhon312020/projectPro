@@ -1,0 +1,42 @@
+<div class="shadow cus-table mb-3 ">
+	<div class="form-heading"><h3>Feedback Form</h3></div>
+	<form [formGroup]="ReviewForm" (ngSubmit)="onSubmit()">
+		<div class="mb-3 row">
+			<div class="col-md-12 mb-2">
+        <label for="title" class="form-label">Project</label>
+        <input type="text" class="form-control" formControlName="title" [ngClass]="formData['title'].invalid && (formData['title'].dirty || formData['title'].touched || submitted) ? 'is-invalid' : {'is-valid': formData['title'].valid}" id="title">
+      </div>
+		</div>
+		<div class="row" >
+			<div class="col-md-12 mb-4">
+				<div for="rating" class="form-label mb-0">Rating</div>
+				<div class="rate" [ngClass]="formData['rating'].invalid && (formData['rating'].dirty || formData['rating'].touched || submitted) ? 'is-invalid' : {'is-valid': formData['rating'].valid}">
+			    <input type="radio" id="star5" formControlName="rating"  value="5" />
+			    <label for="star5" title="text">5 stars</label>
+			    <input type="radio" id="star4" formControlName="rating" value="4" />
+			    <label for="star4" title="text">4 stars</label>
+			    <input type="radio" id="star3" formControlName="rating" value="3" />
+			    <label for="star3" title="text">3 stars</label>
+			    <input type="radio" id="star2" formControlName="rating" value="2" />
+			    <label for="star2" title="text">2 stars</label>
+			    <input type="radio" id="star1" formControlName="rating" value="1"  />
+			    <label for="star1" title="text">1 star</label>
+			  </div>
+			  <div class="invalid-feedback clear">Rating required.</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12 mb-4">
+        <label for="message" class="form-label">Message</label>
+        <textarea class="form-control" formControlName="message" [ngClass]="formData['message'].invalid && (formData['message'].dirty || formData['message'].touched || submitted) ? 'is-invalid' : {'is-valid': formData['message'].valid}" id="message" placeholder="Enter Your Message" rows="7"></textarea>
+        <div class="invalid-feedback">Message required.</div>
+      </div>
+		</div>
+
+		<div class="mb-3 row ">
+			<div class="col-sm-7 text-end">
+				<input type="submit" value="Submit" name="submit" class="btn btn-cus">
+			</div>
+		</div>
+	</form>
+</div>

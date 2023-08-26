@@ -1,0 +1,84 @@
+<div class="shadow cus-table mb-3">
+	<div class="mb-3 form-heading">
+		<h3>{{heading?.title}}</h3>
+		<p>{{heading?.content}}</p>
+	</div>
+	<form [formGroup]="BlogForm" (ngSubmit)="onSubmit()" action="">
+    <div class="row mb-3">
+
+      <div class="col-sm-6">
+
+        <div class="mb-3">
+					<label for="title" class="form-label">Title</label>
+					<input type="text" (change)="onChangeInTitle()" [ngClass]="f['title'].invalid && (f['title'].dirty || f['title'].touched || submited.status) ? 'is-invalid' : {'is-valid': f['title'].valid}" formControlName="title" class="form-control" id="title" placeholder="Enter blog title">
+					<div class="invalid-feedback">
+						<div *ngIf="f['title'].errors?.['required']">
+							Title is required.
+						</div>
+					</div>
+				</div>
+
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Category</label>
+          <select class="form-select" [ngClass]="f['category_id'].invalid && (f['category_id'].dirty || f['category_id'].touched || submited.status) ? 'is-invalid' : {'is-valid': f['category_id'].value}" formControlName="category_id" aria-label="Default select example">
+            <option value="" selected>-- Select Category --</option>
+            <option *ngFor="let cat of categories" [value]="cat.id">{{cat.title}}</option>
+          </select>
+          <div class="invalid-feedback">Category is required.</div>
+        </div>
+
+        <div class="mb-3">
+					<label for="img" class="form-label">Thumbnail</label>
+					<input #FileInput type="file" [ngClass]="img_err.status || ( submited.status && !Blog.img) ? 'is-invalid' : { 'is-valid' : !img_err.status && Blog.img}" class="form-control" id="img" (change)="onChangeInChoosefile($event)">
+					<div class="invalid-feedback">{{img_err.msg}}</div>
+					<div class="valid-feedback">File ready to Upload</div>
+				</div>
+
+      </div>
+      <div class="col-sm-6">
+
+        <div class="mb-3">
+          <label for="launch_date" class="form-label">Launch Date</label>
+          <input id="launch_date" type="date" [ngClass]="{'is-valid' : f['launch_date'].value}" formControlName="launch_date" class="form-control" [min]="today">
+        </div>
+
+        <div class="mt-5">
+          <tr>
+            <td>
+              <label class="form-check-label" for="flexSwitchCheckChecked">Inactive</label>
+            </td>
+            <td class="form-check form-switch cus-switch">
+              <input formControlName="status" class="form-check-input cus-check-input"  type="checkbox" id="flexSwitchCheckChecked" checked>
+            </td>
+            <td>
+              <label class="form-check-label" for="flexSwitchCheckChecked">Active</label>
+            </td>
+          </tr>
+        </div>
+
+        <div class="mb-3 cus-img" *ngIf="img_src && img_src != 'null'">
+          <div class="cus-del-iconImg" (click)="removeImg()"><i class="far fa-trash-alt"></i></div>
+          <div><img [src]="img_src | safeResourceUrl" alt="img loading ..." class="img-thumbnail cus-img-100"></div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="text-center mb-3">
+      <label for="content" class="form-label ">Content</label>
+      <textarea hidden class="form-control" formControlName="content" [ngClass]="f['content'].invalid && (f['content'].dirty || f['content'].touched || submited.status) ? 'is-invalid' : {'is-valid': f['content'].valid}" id="content" rows="3"></textarea>
+      <div class="invalid-feedback">Content is required.</div>
+      <!-- <div class="col-sm-12">
+        <ckeditor [editor]="Editor" ></ckeditor>
+      </div> -->
+      <!-- <angular-editor [placeholder]="'Enter text here...'" formControlName="content" [config]="config"></angular-editor> -->
+    </div>
+    <div #content id="editor" class="mb-3"></div>
+
+    <div class=" text-center">
+      <input type="submit" class="btn btn-cus" value="Submit">
+    </div>
+
+  </form>
+</div>

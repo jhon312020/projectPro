@@ -1,0 +1,8 @@
+.btn-cus {
+    background: var(--color-primary);
+    color: #fff;
+}
+.btn-cus:hover {
+    background: rgba(var(--color-secondary-rgb), 0.9);
+    
+}

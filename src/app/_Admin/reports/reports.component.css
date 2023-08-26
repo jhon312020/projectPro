@@ -1,0 +1,33 @@
+.cus-shadow {
+  box-shadow: 5px 5px 10px 2px rgba(0, 0, 0, 0.5);
+  margin-bottom: 1rem;
+}
+.cus-shadow:hover {
+  transform: translateY(2px);
+  cursor: pointer;
+}
+.cus-shadow:hover .dot {
+  background-color: var(--color-primary);
+}
+
+.cus-shadow:hover .cus-heading {
+  color: #404040;
+}
+
+.cus-icon {
+  font-size: 3rem;
+  color: white;
+}
+
+.cus-heading {
+  padding-left: 10px;
+  color: gray;
+}
+
+.dot {
+  height: 5rem;
+  width: 5rem;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+}

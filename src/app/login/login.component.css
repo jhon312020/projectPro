@@ -1,0 +1,48 @@
+.shadow h1 {
+    font-size: 20px;
+    margin: 0;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    color:var(--color-secondary);
+    font-family: var(--font-primary);
+    line-height: 2.2;
+  }
+
+.shadow h4 {
+  font-size: 15px;
+  margin: 0;
+  font-weight: 600;
+  letter-spacing: -1px;
+  color:var(--color-secondary);
+  font-family: var(--font-primary);
+  line-height: 2;
+}
+.shadow p {
+  font-size: 15px;
+  text-indent: 2rem;
+}
+.btn-cus {
+  background: var(--color-primary);
+  color: #fff;
+}
+.btn-cus:hover {
+  background: rgba(var(--color-secondary-rgb), 0.9);
+}
+
+.my-account {
+  background-color: var(--color-primary);
+  font-size: 20px;
+  font-weight: 600;
+  color: #fff;
+  border-radius: 6px 6px 0 0;
+  line-height: 2;
+}
+
+.account li {
+  list-style-type: none;
+  padding-bottom: 0.5rem;
+}
+
+.account a {
+  padding: auto;
+}

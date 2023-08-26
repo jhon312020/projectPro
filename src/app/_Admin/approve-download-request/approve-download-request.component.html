@@ -1,0 +1,44 @@
+<app-alert-msg></app-alert-msg>
+<div class="shadow cus-table mb-3">
+	<app-from-to-date-form *ngIf="ReportData" [FromToData]="ReportData" (sendRes)="receiveReportRes($event)"></app-from-to-date-form>
+	<table class="table">
+		<thead>
+			<tr>
+				<th scope="col">#</th>
+				<th scope="col">User Name</th>
+				<th scope="col">Project Name</th>
+				<th scope="col">Payment Status</th>
+				<th scope="col">Download Count</th>
+				<th scope="col">Give Permission</th>
+				<th scope="col">View Project</th>
+			</tr>
+		</thead>
+		<tbody *ngIf="Data.length > 0 else emptydata">
+				<tr *ngFor="let value of Data | paginate: { itemsPerPage: pagination.itemsPerPage, currentPage: pagination.page, totalItems: pagination.totalRecCount } index as i">
+					<th scope="row">{{(i + 1) + (pagination.page - 1) * pagination.itemsPerPage}}</th>
+					<td>{{value.user.name}}</td>
+					<td class="w-29">{{value.project.title}}</td>
+					<td>{{value.payment}}</td>
+					<td>{{value.download_count}}</td>
+					<td class="p-unset">
+						<button class="icon-button" (click)="givePermission(value.id)"><i class="fas fa-download"></i> Grant</button>
+	        </td>
+					<td class="p-unset">
+						<button [routerLink]="'/'+value.project.type+'s/'+value.project.category.slug+'/'+value.project.slug" class="icon-button"><i class="far fa-eye "></i> View</button>
+					</td>
+				</tr>
+		</tbody>
+		<ng-template #emptydata>
+			<tbody>
+				<tr>
+					<td colspan="7" class="text-center"><h6>Currently no records</h6></td>
+				</tr>
+			</tbody>
+		</ng-template>
+	</table>
+	
+	<div class="mt-3" *ngIf="Data.length > 0">
+		<pagination-controls (pageChange)="getPageData($event)"></pagination-controls>
+	</div>
+
+</div>

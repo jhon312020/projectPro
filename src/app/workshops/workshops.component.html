@@ -1,0 +1,35 @@
+<main id="main">
+	<section id="portfolio-details" class="portfolio-details">
+	  <div class="container" data-aos="fade-up">
+      <p class='content-highlight'><strong>User Action Info: </strong> You can get the <strong>Workshops</strong> related additional info by submitting the <strong>{{this.serviceFormInfo.title}}</strong>.</p>
+	    <div class="position-relative h-100">
+        <div class="row justify-content-between mt-3">
+          <div class="col-lg-7 about">
+            <div class="portfolio-description mt-3 content">
+              <h2>Workshops</h2>
+              <p>Workshops are interactive sessions or programs designed to provide hands-on learning experiences and practical training in a specific field or subject. They are typically conducted by experts or professionals who have extensive knowledge and experience in the respective domain.</p>
+              <p>We at <strong>IndiTechSoft</strong> provide our Workshops in three niche Software Technologies viz Blockchain, Machine Learning and Cloud Computing (AWS).</p>
+              <p>The Workshop duration will be between 3 to 5 working days with a minimum of 30 participants.</p>
+              <p>The highlights of our Workshop Programs include:</p>
+              <ul>
+              	<li><i class="bi bi-check-circle-fill"> </i>Basic concepts/ Technology explanation with Hands-on exposure.</li>
+                <li><i class="bi bi-check-circle-fill"> </i>Groups based exercises to understand the topics and get the required skills and knowledge.</li>
+                <li><i class="bi bi-check-circle-fill"> </i>Each Group in the Workshop will complete atleast one project in the selected technology.</li>
+                <li><i class="bi bi-check-circle-fill"> </i>Workshop completion Certificates will be issued to all the participants on successful completion of the Workshops.</li>
+                <li><i class="bi bi-check-circle-fill"> </i>This is normally done at college premises</li>
+              </ul>
+              <h5 class="text-end">{{this.bestWishes}}</h5>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div>
+              <app-services-form [serviceFormInfo]="this.serviceFormInfo"></app-services-form>
+            </div>
+          </div>
+        </div>
+	    </div>
+	  </div>
+	</section><!-- End Section -->
+</main><!-- End #main -->
+
+

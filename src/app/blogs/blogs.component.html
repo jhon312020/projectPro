@@ -1,0 +1,49 @@
+<main id="main">
+
+    <!-- ======= Blog Section ======= -->
+    <section id="blog" class="blog">
+      <div class="container" data-aos="fade-up">
+
+        <div class="row gy-4 posts-list">
+
+          <div *ngFor="let blog of Blogs | paginate: { itemsPerPage: 10, currentPage: page };" class="col-xl-4 col-md-6">
+            <article>
+
+              <div class="post-img">
+                <img [src]="base+blog.img" alt="" class="img-fluid">
+              </div>
+
+              <p class="post-category">{{blog.cat_title}}</p>
+
+              <h2 class="title">
+                <a routerLink="/blog/{{blog.slug}}">{{blog.title}}</a>
+              </h2>
+
+              <div class="d-flex align-items-center">
+                <img src="assets/img/blog/blog-author.jpg" alt="" class="img-fluid post-author-img flex-shrink-0">
+                <div class="post-meta">
+                  <p class="post-author-list">Admin</p>
+                  <p class="post-date">
+                    <time datetime="2022-01-01">{{blog.created_at}}</time>
+                  </p>
+                </div>
+              </div>
+
+            </article>
+          </div><!-- End post list item -->
+
+        </div><!-- End blog posts list -->
+        <!-- <pagination-controls (pageChange)="page = $event"></pagination-controls> -->
+        <div class="blog-pagination">
+          <pagination-controls (pageChange)="page = $event"></pagination-controls>
+          <!-- <ul class="justify-content-center">
+            <li><a href="#">1</a></li>
+            <li class="active"><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+          </ul> -->
+        </div><!-- End blog pagination -->
+
+      </div>
+    </section><!-- End Blog Section -->
+
+  </main><!-- End #main -->

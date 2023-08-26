@@ -1,0 +1,118 @@
+<div class="shadow cus-table mb-3 ">
+	<div class="form-heading"><h3>User Details</h3></div>
+	<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+		<div class="row">
+			<div class="col-sm-6">
+				<div class="col-md-12 mb-4">
+					<label for="name" class="form-label">Name</label>
+					<input type="name" class="form-control" [ngClass]="f['name'].invalid && (f['name'].dirty || f['name'].touched) ? 'is-invalid' : {'is-valid': f['name'].valid}" id="name" formControlName="name" required>
+					<div *ngIf="f['name'].invalid && (f['name'].dirty || f['name'].touched)" class="invalid-feedback">
+						<div *ngIf="f['name'].errors?.['required']">
+							Name is required!
+						</div>
+						<div *ngIf="f['name'].errors?.['pattern']">
+							Invalid name!
+						</div>
+					</div>
+				</div>
+		
+				<div class="col-md-12 mb-4">
+					<label for="mobile" class="form-label">Mobile</label>
+					<input type="mobile" formControlName="mobile"  class="form-control" [ngClass]="f['mobile'].invalid && (f['mobile'].dirty || f['mobile'].touched) ? 'is-invalid' : {'is-valid': f['mobile'].valid}" id="mobile" required>
+					<div *ngIf="f['mobile'].invalid && (f['mobile'].dirty || f['mobile'].touched)" class="invalid-feedback">
+						<div *ngIf="f['mobile'].errors?.['required']">
+							Mobile is required!
+						</div>
+						<div *ngIf="f['mobile'].errors?.['pattern']">
+							Invalid mobile number!
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-6">
+				<div class="col-md-12 mb-4">
+					<label for="email" class="form-label">Email</label>
+					<input type="email" class="form-control" [ngClass]="(f['email'].invalid && (f['email'].dirty || f['email'].touched)) || err.status ? 'is-invalid' : {'is-valid': f['email'].valid}" id="email" formControlName="email" (keyup)="this.err.status = false" required>
+					<div *ngIf="(f['email'].invalid && (f['email'].dirty || f['email'].touched)) || err.status" class="invalid-feedback">
+						<div *ngIf="f['email'].errors?.['required']">
+							Email is required!
+						</div>
+						<div *ngIf="f['email'].errors?.['pattern']">
+							Invalid email!
+						</div>
+					</div>
+					<div *ngIf="err.status" class="invalid-feedback">
+						{{err.msg}}
+					</div>
+				</div>
+
+				<div *ngIf="Admin" class="mb-3 row">
+					<div class="col-sm-6">
+						<label for="role" class="form-label text-end">Role</label>
+						<select class="form-select" formControlName="role" aria-label="Default select example">
+							<option value="admin">Admin</option>
+							<option value="staff">Staff</option>
+							<option selected value="user">User</option>
+						</select>
+					</div>
+					<div class="col-sm-6">
+            <label for="status" class="form-label text-end">Status</label>
+            <table>
+						<tr>
+							<td>
+								<label class="form-check-label" for="flexSwitchCheckChecked">Inactive</label>
+							</td>
+							<td class="form-check form-switch cus-switch">
+								<input formControlName="status" class="form-check-input cus-check-input"  type="checkbox" id="flexSwitchCheckChecked"/>
+							</td>
+							<td>
+								<label class="form-check-label" for="flexSwitchCheckChecked">Active</label>
+							</td>
+            </tr>
+          </table>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row" *ngIf="create">
+			<div class="col-md-6 mb-4">
+				<label for="password" class="form-label">Password</label>
+				<input type="password" formControlName="password"  class="form-control" [ngClass]="f['password'].invalid && (f['password'].dirty || f['password'].touched) ? 'is-invalid' : {'is-valid': f['password'].valid}" id="password" required>
+				<div *ngIf="f['password'].invalid && (f['password'].dirty || f['password'].touched)" class="invalid-feedback">
+					<div *ngIf="f['password'].errors?.['required']">
+						password is required!
+					</div>
+					<div *ngIf="f['password'].errors?.['minlength']">
+						Invalid password! Password must be 6 characters above!
+					</div>
+					<div *ngIf="f['password'].errors?.['maxlength']">
+						Invalid password! Password must be 20 characters belove!
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-6 mb-4">
+				<label for="confirm_password" class="form-label">Confirm Password</label>
+				<input type="password" formControlName="confirm_password"  class="form-control" [ngClass]="f['confirm_password'].invalid && (f['confirm_password'].dirty || f['confirm_password'].touched) ? 'is-invalid' : {'is-valid': f['confirm_password'].valid}" id="confirm_password" required>
+				<div *ngIf="f['confirm_password'].invalid && (f['confirm_password'].dirty || f['confirm_password'].touched)" class="invalid-feedback">
+					<div *ngIf="f['confirm_password'].errors?.['required']">
+						password is required!
+					</div>
+					<div *ngIf="f['confirm_password'].errors?.['match']">
+						Password not match!
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="row ">
+			<div class="text-center">
+				<div>
+					<!-- <input type="submit" [disabled]="!userForm.valid || err.status" value="Save" class="btn btn-cus"> -->
+					<button type="submit" class="btn btn-cus" [disabled]="submitted.showLoader"><span class="button-loader" *ngIf="submitted.showLoader"></span>Save</button>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>

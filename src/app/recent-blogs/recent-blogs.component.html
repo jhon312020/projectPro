@@ -1,0 +1,35 @@
+<section id="recent-posts" class="recent-posts sections-bg">
+  <div class="container" data-aos="fade-up">
+    <div class="section-header">
+      <h2>Recent Blog Posts</h2>
+      <p>Exploring the Future of Innovation, Unleashing the Power of Technology and Stay Connected, Stay Informed</p>
+    </div>
+    <div class="row gy-4">
+      <div *ngFor="let blog of Blogs" class="col-xl-4 col-md-6">
+        <article>
+
+          <div class="post-img">
+            <img [src]="base+blog.img" alt="" class="img-fluid">
+          </div>
+
+          <p class="post-category">{{blog.cat_title}}</p>
+
+          <h2 class="title">
+            <a routerLink="/blog/{{blog.slug}}">{{blog.title}}</a>
+          </h2>
+
+          <div class="d-flex align-items-center">
+            <img src="assets/img/blog/blog-author.jpg" alt="" class="img-fluid post-author-img flex-shrink-0">
+            <div class="post-meta">
+              <p class="post-author-list">Admin</p>
+              <p class="post-date">
+                <time datetime="2022-01-01">{{blog.created_at}}</time>
+              </p>
+            </div>
+          </div>
+
+        </article>
+      </div><!-- End post list item -->
+    </div><!-- End recent posts list -->
+  </div>
+</section>

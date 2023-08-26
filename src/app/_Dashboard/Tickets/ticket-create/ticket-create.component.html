@@ -1,0 +1,33 @@
+<div class="shadow cus-table mb-3 ">
+	<div class="form-heading"><h3>Support Request Form</h3></div>
+	<form [formGroup]="TicketForm" (ngSubmit)="onSubmit()">
+		<div class="mb-3 row">
+			<div class="col-md-12 mb-2">
+        <label for="title" class="form-label">Project</label>
+        <input type="text" class="form-control" formControlName="title" [ngClass]="formData['title'].invalid && (formData['title'].dirty || formData['title'].touched || submitted) ? 'is-invalid' : {'is-valid': formData['title'].valid}" id="title">
+      </div>
+		</div>
+
+		<div class="row">
+      <div class="col-md-12 mb-4">
+        <label for="subject" class="form-label">Subject</label>
+        <input type="text" class="form-control" formControlName="subject" [ngClass]="formData['subject'].invalid && (formData['subject'].dirty || formData['subject'].touched || submitted) ? 'is-invalid' : {'is-valid': formData['subject'].valid}" id="subject" placeholder="Enter Your subject">
+        <div class="invalid-feedback">Subject required.</div>
+      </div>
+    </div>
+		
+		<div class="row">
+			<div class="col-md-12 mb-4">
+        <label for="message" class="form-label">Message</label>
+        <textarea class="form-control" formControlName="message" [ngClass]="formData['message'].invalid && (formData['message'].dirty || formData['message'].touched || submitted) ? 'is-invalid' : {'is-valid': formData['message'].valid}" id="message" placeholder="Enter Your Message" rows="7"></textarea>
+        <div class="invalid-feedback">Message required.</div>
+      </div>
+		</div>
+
+		<div class="mb-3 row ">
+			<div class="col-sm-7 text-end">
+				<input type="submit" value="Submit" name="submit" class="btn btn-cus">
+			</div>
+		</div>
+	</form>
+</div>

@@ -1,0 +1,64 @@
+<div class="shadow cus-table">
+	<div class="mb-3 form-heading">
+		<h3>{{heading?.title}}</h3>
+		<p>{{heading?.content}}</p>
+	</div>
+	<form [formGroup]="CategoryForm" (ngSubmit)="onSubmit()" action="">
+		<div class="mb-3 row">
+			<div class="col-sm-6">
+
+				<div class="mb-3">
+					<label for="title" class="form-label">Title</label>
+					<input type="text" (change)="onChangeInTitle()" [ngClass]="f['title'].invalid && (f['title'].dirty || f['title'].touched) ? 'is-invalid' : {'is-valid': f['title'].valid}" formControlName="title" class="form-control" id="title" placeholder="Enter category name">
+					<div class="invalid-feedback">
+						<div *ngIf="f['title'].errors?.['required']">
+							Title is required.
+						</div>
+					</div>
+				</div>
+
+				<div class="mb-3">
+					<label for="thumbline_pic" class="form-label">Thumbnail</label>
+					<input #FileInput type="file" [ngClass]="img_err.status ? 'is-invalid' : { 'is-valid' : img_err.status == false}" class="form-control" id="thumbline_pic" (change)="onChangeInChoosefile($event)">
+					<div class="invalid-feedback">{{img_err.msg}}</div>
+					<div class="valid-feedback">File ready to Upload</div>
+				</div>
+				
+			</div>
+			<div class="col-sm-6">
+				<div class="mb-3">
+					<label for="exampleFormControlTextarea1" class="form-label">Status</label>
+					<tr>
+						<td>
+							<label class="form-check-label" for="flexSwitchCheckChecked">Inactive</label>
+						</td>
+						<td class="form-check form-switch cus-switch">
+							<input class="form-check-input cus-check-input" formControlName="status" type="checkbox" id="flexSwitchCheckChecked" checked>
+						</td>
+						<td>
+							<label class="form-check-label" for="flexSwitchCheckChecked">Active</label>
+						</td>
+					</tr>
+				</div>
+        <div class="mb-3">
+          <label for="title" class="form-label">Order By</label>
+          <input type="text" (change)="onChangeInOrderBy()" [ngClass]="f['order_by'].invalid && (f['order_by'].dirty || f['order_by'].touched) ? 'is-invalid' : {'is-valid': f['order_by'].valid}" formControlName="order_by" class="form-control" id="order_by" placeholder="Enter Order number">
+          <div class="invalid-feedback">
+            <div *ngIf="f['order_by'].errors?.['required']">
+              Order By is required.
+            </div>
+          </div>
+        </div>
+        <div class="mb-3 cus-img" *ngIf="img_src">
+					<div class="cus-del-iconImg" (click)="removeImg()"><i class="far fa-trash-alt"></i></div>
+					<div><img [src]="img_src | safeResourceUrl" alt="img loading ..." class="img-thumbnail cus-img-100"></div>
+				</div>
+      </div>
+
+		</div>
+		
+		<input class="btn btn-cus" type="submit" [disabled]="submited.status || CategoryForm.invalid || img_err.status" value="Submit">
+		<!-- <div class="alert alert-warning">{{submited | json}}</div> -->
+		
+	</form>
+</div>

@@ -1,0 +1,55 @@
+<div class="row mt-3">
+	<app-alert-msg></app-alert-msg>
+	<div class="col-xl-6">
+		<div (click)="gotoOders()" class="cus-shadow rounded">
+			<div class="container p-3">
+				<table>
+					<tbody>
+						<td class="dot text-center"><i class="fas fa-shopping-cart cus-icon mt-3"></i></td>
+						<td class="cus-heading"><h5><b>{{ordersCount}}</b><br>Orders</h5></td>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+
+	<!-- <div class="col-xl-4">
+		<div class="cus-shadow rounded">
+			<div class="container p-3">
+				<table>
+					<tbody>
+						<td class="dot text-center"><i class="fas fa-download cus-icon mt-3"></i></td>
+						<td class="cus-heading"><h5><b>{{downloadCount}}</b><br>Downloads</h5></td>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div> -->
+
+	<!-- <div class="col-xl-3">
+		<div class="cus-shadow rounded">
+			<div class="container p-3">
+				<table>
+					<tbody>
+						<td class="dot text-center"><i class="fas fa-heart cus-icon mt-3"></i></td>
+						<td class="cus-heading"><h5><b>0</b><br>Favourites</h5></td>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div> -->
+
+	<div class="col-xl-6">
+		<div class="cus-shadow rounded">
+			<div class="container p-3">
+				<table routerLink="/dashboard/transactions">
+					<tbody>
+						<td class="dot text-center"><i class="fas fa-rupee-sign cus-icon mt-3"></i></td>
+						<td class="cus-heading"><h5><b>{{transactionsCount}}</b><br>Transactions</h5></td>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+
+</div>

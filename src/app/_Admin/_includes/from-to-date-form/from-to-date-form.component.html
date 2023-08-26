@@ -1,0 +1,32 @@
+<form [formGroup]="ReportForm" (ngSubmit)="onSubmit()">
+	<div class="row mb-4">
+	  <div class="col-sm-3">
+		 	<div class="mb-3">
+				<label for="from_date" class="form-label">From Date</label>
+				<input type="date" [min]="today" formControlName="from_date"  class="form-control" [ngClass]="formData['from_date'].invalid && (formData['from_date'].dirty || formData['from_date'].touched || submitted.status) ? 'is-invalid' : {'is-valid': formData['from_date'].valid}" id="from_date" required>
+				<div *ngIf="formData['from_date'].invalid && (formData['from_date'].dirty || formData['from_date'].touched || submitted.status)" class="invalid-feedback">
+				  <div *ngIf="formData['from_date'].errors?.['required']">
+				    From date is required!
+				  </div>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-3">
+			<div class="mb-3">
+				<label for="to_date" class="form-label">To Date</label>
+				<input type="date" [min]="today" formControlName="to_date"  class="form-control" [ngClass]="formData['to_date'].invalid && (formData['to_date'].dirty || formData['to_date'].touched || submitted.status) ? 'is-invalid' : {'is-valid': formData['to_date'].valid}" id="to_date" required>
+				<div *ngIf="formData['to_date'].invalid && (formData['to_date'].dirty || formData['to_date'].touched || submitted.status)" class="invalid-feedback">
+				  <div *ngIf="formData['to_date'].errors?.['required']">
+				    To date is required!
+				  </div>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-3">
+			<div class="text-center mt-4">
+	      <button type="submit" [disabled]="submitted.showLoader" class="btn btn-cus"><span class="button-loader" *ngIf="submitted.showLoader"></span><i class="fa fa-search"></i> Search</button>
+	    </div>
+	  </div>
+	  <div class="col-sm-3 mt-4"><app-backtopage [backToPage]="BackPage"></app-backtopage></div>
+ 	</div>
+</form>

@@ -1,0 +1,79 @@
+<main id="main">
+  <!-- ======= Blog Details Section ======= -->
+  <section id="blog" class="blog">
+    <div class="container" data-aos="fade-up">
+      <div class="row about">
+        <div class="col-lg-12 content">
+          <p class='content-highlight'>{{this.projectIntro}}</p>
+          <ul class='content'>
+            <li *ngFor="let intro of projectIntroList"><i class="bi bi-check-circle-fill"> </i>{{intro}}</li>
+          </ul>
+        </div>
+      </div>
+      <div class="row g-5">
+        <div class="col-lg-4">
+          <div class="sidebar">
+            <div class="sidebar-item categories">
+              <h3 class="sidebar-title">Categories</h3>
+              <ul class="mt-3" *ngIf="gData.Category">
+                <li *ngFor="let cat of gData.Category"><input type="checkbox" [checked]="projectSlug == cat.slug" class="check" (change)="changeCategory($event.target)" [id]="cat.slug" > <label [for]="cat.slug" class="p-2">{{cat.title}}</label></li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-lg-8">
+
+          <div id="portfolio" class="portfolio">
+            <div class="row gy-4 portfolio-container">
+              <div *ngFor="let project of Projects" class="col-xl-4 col-md-6 portfolio-item">
+                <div class="portfolio-wrap">
+
+
+                  <a [routerLink]="type+project.cat_slug+'/'+project.slug" data-gallery="portfolio-gallery-app" class="glightbox">
+                    <img [src]="base+project.img" class="img-fluid" alt="">
+                  </a>
+                  <div class="portfolio-info">
+                    <h4><a [routerLink]="type+project.cat_slug+'/'+project.slug">{{project.title}}</a></h4>
+                    <p>{{project.description}}</p>
+                    <!-- <p>Price: {{project.price}}/-</p> -->
+                  </div>
+                </div>
+              </div>
+              <div *ngIf="!Projects || hasNoSelectedProjects()" class="empty">
+                <div class="empty-content">
+                  <h4>No items to display!</h4>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- <section id="portfolio" class="portfolio">
+            <div class="container" data-aos="fade-up">
+              <div class="portfolio-isotope" data-portfolio-filter="*" data-portfolio-layout="masonry" data-portfolio-sort="original-order" data-aos="fade-up" data-aos-delay="100">
+                <div class="row gy-4 portfolio-container">
+
+                  <div *ngFor="let project of Projects" class="col-xl-4 col-md-6 portfolio-item filter-app">
+                    <div class="portfolio-wrap">
+                      <a [routerLink]="type+project.category.slug+'/'+project.slug" data-gallery="portfolio-gallery-app" class="glightbox">
+                        <img [src]="base+project.img" class="img-fluid" alt="">
+                      </a>
+                      <div class="portfolio-info">
+                        <h4><a [routerLink]="type+project.category.slug+'/'+project.slug">{{project.title}}</a></h4>
+                        <p>{{project.description}}</p>
+                        <p>Price: {{project.price}}/-</p>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </section> -->
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Blog Details Section -->
+</main>
+<!-- End #main -->

@@ -1,0 +1,132 @@
+<form [formGroup]="ProjectForm" (ngSubmit)="onSubmit()" action="">
+
+	<div class="mb-3 row">
+
+		<div class="col-sm-6">
+
+			<div class="mb-3">
+				<label for="title" class="form-label">Title</label>
+				<input type="text" (change)="onChangeInTitle()" [ngClass]="f['title'].invalid && (f['title'].dirty || f['title'].touched || submitted.status) ? 'is-invalid' : {'is-valid':f['title'].valid}" formControlName="title" class="form-control" id="title" placeholder="Enter title">
+				<div class="invalid-feedback">Title is required.</div>
+			</div>
+			<!-- <div *ngIf="f['title'].invalid && (f['title'].dirty || f['title'].touched || submitted.status)" class="alert alert-danger">
+				<div *ngIf="f['title'].errors?.['required']">
+				Title is required.
+				</div>
+			</div> -->
+
+			<div class="mb-3">
+				<label for="exampleFormControlInput1" class="form-label">Category</label>
+				<select class="form-select" [ngClass]="f['category_id'].invalid && (f['category_id'].dirty || f['category_id'].touched || submitted.status) ? 'is-invalid' : {'is-valid': f['category_id'].valid}" formControlName="category_id" aria-label="Default select example">
+					<option value="" selected>-- Select Category --</option>
+					<option *ngFor="let cat of categories" [value]="cat.id">{{cat.title}}</option>
+				</select>
+				<div class="invalid-feedback">Category is required.</div>
+			</div>
+			<!-- <div *ngIf="f['category_id'].invalid && (f['category_id'].dirty || f['category_id'].touched || submitted.status)" class="alert alert-danger">
+				<div *ngIf="f['category_id'].errors?.['required']">
+					Category is required.
+				</div>
+			</div> -->
+
+			<div class="mb-2">
+				<label for="description" class="form-label">Description</label>
+				<textarea class="form-control" formControlName="description" id="description" rows="3"></textarea>
+			</div>
+			
+			<div class="mb-3">
+				<label for="img" class="form-label">Cover Picture</label>
+				<input type="file" #ImgInput (change)="onChangeInChoosefile($event)" [ngClass]="img_err.status ? 'is-invalid' : {'is-valid': img_err.status == false}" formControlName="img" class="form-control" id="img">
+				<div class="invalid-feedback">{{img_err.msg}}</div>
+				<div class="valid-feedback">Ready to upload</div>
+			</div>
+			<!-- <div class="alert alert-danger" *ngIf="img_err.status">{{img_err.msg}}</div> -->
+
+		</div>
+
+		<div class="col-sm-6">
+
+			<div class="mb-3">
+				<label for="exampleFormControlInput1" class="form-label">Type</label>
+				<select formControlName="type" [ngClass]="f['type'].invalid && (f['type'].dirty || f['type'].touched || submitted.status) ? 'is-invalid': {'is-valid': f['type'].valid}" class="form-select" aria-label="Default select example">
+					<option value="" selected>-- Select Type --</option>
+					<option value="project">Project</option>
+					<option value="mini-project">Mini Project</option>
+				</select>
+				<div class="invalid-feedback">Type is required.</div>
+			</div>
+			<!-- <div *ngIf="f['type'].invalid && (f['type'].dirty || f['type'].touched || submitted.status)" class="alert alert-danger">
+				<div *ngIf="f['type'].errors?.['required']">
+				Type is required.
+				</div>
+			</div> -->
+
+			<div class="mb-3">
+				<label for="src_code" class="form-label">Source Code</label>
+				<input type="file" (change)="onChangeInSourceCode($event)" [ngClass]="src_code_err.status ? 'is-invalid': {'is-valid':src_code_err.status == false}" formControlName="src_code" class="form-control" id="src_code">
+				<div class="invalid-feedback">{{src_code_err.msg}}</div>
+			</div>
+			<!-- <div class="alert alert-danger" *ngIf="src_code_err.status">{{src_code_err.msg}}</div> -->
+
+			<div class=" row mb-3">
+				<div class="col-sm-6">
+					<div class="mb-3">
+						<label for="price" class="form-label">Price</label>
+						<input type="number" formControlName="price" [ngClass]="f['price'].invalid && (f['price'].dirty || f['price'].touched || submitted.status) ? 'is-invalid' : {'is-valid': f['price'].valid}" class="form-control" id="price" placeholder="Enter Price">
+						<div class="invalid-feedback">Price is required.</div>
+					</div>
+					<!-- <div *ngIf="f['price'].invalid && (f['price'].dirty || f['price'].touched || submitted.status)" class="alert alert-danger">
+						<div *ngIf="f['price'].errors?.['required']">
+						Price is required.
+						</div>
+					</div> -->
+				</div>
+				<div class="col-sm-6">
+					<label for="discount" class="form-label">Discount <span>in percentage(%)</span></label>
+					<input type="number" formControlName="discount" class="form-control" id="discount" placeholder="Enter Discount">
+				</div>
+			</div>
+			
+			<div class="mb-3">
+        <label for="status" class="form-label">Status</label>
+				<tr>
+					<td>
+						<label class="form-check-label" for="flexSwitchCheckChecked">Inactive</label>
+					</td>
+					<td class="form-check form-switch cus-switch">
+						<input formControlName="status" class="form-check-input cus-check-input"  type="checkbox" id="flexSwitchCheckChecked" checked>
+					</td>
+					<td>
+						<label class="form-check-label" for="flexSwitchCheckChecked">Active</label>
+					</td>
+				</tr>
+			</div>
+
+			<div class="mb-3 cus-img" *ngIf="img_src">
+				<div class="cus-del-iconImg" (click)="removeImg()"><i class="far fa-trash-alt"></i></div>
+				<div><img [src]="img_src | safeResourceUrl" alt="img loading ..." class="img-thumbnail cus-img-100"></div>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="text-center mb-3">
+		<label for="content" class="form-label ">Content</label>
+		<textarea hidden class="form-control" formControlName="content" [ngClass]="f['content'].invalid && (f['content'].dirty || f['content'].touched || submitted.status) ? 'is-invalid' : {'is-valid': f['content'].valid}" id="content" rows="3"></textarea>
+		<div class="invalid-feedback">Content is required.</div>
+		<!-- <div class="col-sm-12">
+			<ckeditor [editor]="Editor" ></ckeditor>
+		</div> -->
+	</div>
+	<div id="editor" class="mb-3"></div>
+	<!-- <div *ngIf="f['content'].invalid && (f['content'].dirty || f['content'].touched || submitted.status)" class="alert alert-danger">
+		<div *ngIf="f['content'].errors?.['required']">
+		Content is required.
+		</div>
+	</div> -->
+
+	<div class=" text-center">
+		<input type="submit" class="btn btn-cus" value="Submit">
+	</div>
+
+</form>

@@ -1,0 +1,6 @@
+/* You can add global styles to this file, and also import other style files */
+.fr-second-toolbar a {
+  display: none !important; 
+}
+div#editor div.fr-wrapper:first-child { display:none !important; }
+/* @import '../node_modules/font-awesome/css/font-awesome.css'; */

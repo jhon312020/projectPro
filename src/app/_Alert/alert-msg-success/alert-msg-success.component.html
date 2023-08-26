@@ -1,0 +1,4 @@
+<div *ngIf="global.success.status" class="alert alert-success alert-dismissible fade show" role="alert">
+	<i class="fas fa-check-circle"></i> {{global.success.message}}
+	<button type="button" (click)="resetSuccess()" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>

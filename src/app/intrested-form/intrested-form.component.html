@@ -1,0 +1,55 @@
+<div class="shadow cus-table mb-3 ">
+	<div class="form-heading"><h3>Enter Details</h3></div>
+	<form [formGroup]="interestedForm" (ngSubmit)="onSubmit()">
+		<div class="row">
+      <div class="col-md-12 mb-4">
+        <label for="name" class="form-label">Name</label>
+        <input type="name" class="form-control" [ngClass]="f['name'].invalid && (f['name'].dirty || f['name'].touched) ? 'is-invalid' : {'is-valid': f['name'].valid}" id="name" formControlName="name" required>
+        <div *ngIf="f['name'].invalid && (f['name'].dirty || f['name'].touched)" class="invalid-feedback">
+          <div *ngIf="f['name'].errors?.['required']">
+            name is required!
+          </div>
+          <div *ngIf="f['name'].errors?.['pattern']">
+            Invalid name!
+          </div>
+        </div>
+      </div>
+  
+      <div class="col-md-12 mb-4">
+        <label for="mobile" class="form-label">Mobile</label>
+        <input type="mobile" formControlName="mobile"  class="form-control" [ngClass]="f['mobile'].invalid && (f['mobile'].dirty || f['mobile'].touched) ? 'is-invalid' : {'is-valid': f['mobile'].valid}" id="mobile" required>
+        <div *ngIf="f['mobile'].invalid && (f['mobile'].dirty || f['mobile'].touched)" class="invalid-feedback">
+          <div *ngIf="f['mobile'].errors?.['required']">
+            mobile is required!
+          </div>
+          <div *ngIf="f['mobile'].errors?.['pattern']">
+            Invalid mobile number!
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12 mb-4">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" [ngClass]="f['email'].invalid && (f['email'].dirty || f['email'].touched) ? 'is-invalid' : {'is-valid': f['email'].valid}" id="email" formControlName="email" (keyup)="this.err.status = false" required>
+        <div *ngIf="f['email'].invalid && (f['email'].dirty || f['email'].touched)" class="invalid-feedback">
+          <div *ngIf="f['email'].errors?.['required']">
+            Email is required!
+          </div>
+          <div *ngIf="f['email'].errors?.['pattern']">
+            Invalid email!
+          </div>
+        </div>
+        <div *ngIf="err.status" class="invalid-feedback">
+          {{err.msg}}
+        </div>
+      </div>
+		</div>
+
+		<div class="row ">
+			<div class="text-center">
+				<div>
+          <button #requestElement type="submit" [disabled]="submitted.showLoader" class="btn btn-cus"><span class="button-loader" *ngIf="submitted.showLoader"></span>{{submitButton.text}}</button>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>

@@ -1,0 +1,35 @@
+<main id="main">
+	<section id="portfolio-details" class="portfolio-details">
+	  <div class="container" data-aos="fade-up">
+       <p class='content-highlight'><strong>User Action Info: </strong> You can get the <strong>Trainings</strong> related additional info by submitting the <strong>{{this.serviceFormInfo.title}}</strong>.</p>
+	    <div class="position-relative h-100">
+        <div class="row justify-content-between mt-3">
+          <div class="col-lg-7 about">
+            <div class="portfolio-description mt-3 content">
+              <h2>Trainings</h2>
+              <p><strong>IndiTechSoft</strong> training has got twin objectives for college students:</p>
+              <ul>
+                <li><i class="bi bi-check-circle-fill"></i>Job Enable the Students during the academic period itself.</li>
+                <li><i class="bi bi-check-circle-fill"></i>Complete the degree academic project as part of the training itself.</li>
+              </ul>
+              <p><strong>IndiTechSoft</strong> Trainings are guided by <strong>Training Made Simple</strong> concept. The Technical Topics will be explained with known simple analogies. Our trainings will have end-to-end approach having four levels viz: Concepts, Technology, Practicals and Projects. </p>
+              <ul>
+              	<li><i class="bi bi-check-circle-fill"> </i>These Software trainings are aimed to provide end-to-end training to the Students in the niche technologies like Blockchain, Machine Learning and Cloud Computing (AWS).</li>
+                <li><i class="bi bi-check-circle-fill"> </i>Every three Students will be designing, developing and executing a project in the selected technology.</li>
+                <li><i class="bi bi-check-circle-fill"> </i>Each participant will be provided with the relevant Certificate on completion of the training.</li>
+                <li><i class="bi bi-check-circle-fill"> </i>These Training programmes are available both on online mode and on offline mode (for colleges).</li>
+                <li><i class="bi bi-check-circle-fill"> </i>These training programmes are also available for working professionals. It is done through weekend Zoom sessions.</li>
+              </ul>
+              <h5 class="text-end">{{this.bestWishes}}</h5>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div>
+              <app-services-form [serviceFormInfo]="this.serviceFormInfo"></app-services-form>
+            </div>
+          </div>
+        </div>
+	    </div>
+	  </div>
+	</section><!-- End Section -->
+</main><!-- End #main -->

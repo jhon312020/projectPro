@@ -1,0 +1,61 @@
+<main *ngIf="this.projectdetails" id="main">
+  <!-- ======= Portfolio Details Section ======= -->
+  <section id="portfolio-details" class="portfolio-details">
+    <div class="container" data-aos="fade-up">
+      <div class="position-relative h-100">
+        <div class="row">
+          <div class="col-lg-12">
+            <p class='content-highlight'>
+              <!-- <strong>User Action Info:</strong> Click on <strong>Buy Now</strong> button to buy the project online. -->
+            <strong>User Action Info:</strong> Make sure that you have logged-in to your account. Click the <strong>Buy Now</strong> button to purchase the Project.
+            </p>
+          </div>
+        </div>
+        <div class="row justify-content-between mt-3">
+          <div class="col-lg-8">
+            <div id="about" class="about">
+              <div class="position-relative mt-4">
+              <img [src]="base+projectdetails.img" class="img-fluid rounded-4" alt="">
+                <a *ngIf="projectdetails.src_video" href="https://www.youtube.com/watch?v=LXb3EKWsInQ" class="glightbox play-btn"></a>
+              </div>
+            </div>
+            <div class="portfolio-description mt-3">
+              <h2>Project detail</h2>
+              <p>{{projectdetails.description}}</p>
+              <div [outerHTML]="projectdetails.content"></div>
+            </div>
+          </div>
+          <div class="col-lg-3">
+            <div class="portfolio-info">
+              <h3>Project information</h3>
+              <ul>
+                <li><strong>Category</strong> <span>{{this.projectdetails.cat_title}}</span></li>
+                <li><strong>Title</strong> <span>{{this.projectdetails.title}}</span></li>
+                <li><strong>Project Artifacts</strong> <span>A zipped file containing Project info, Installation and execution info and Project programs will be available for downloading after buying the project.</span></li>
+                <li><strong>Price</strong> <span><h6><span style="text-decoration: line-through;">{{this.projectdetails.price}}</span><span style="color: green;">   {{this.projectdetails.discount}}% off</span> </h6><h4>{{salePrice}}</h4></span></li>
+                <!-- <li><strong>Client</strong> <span>ASU Company</span></li> -->
+                <li><strong>Project date</strong> <span>{{this.projectdetails.created_at}}</span></li>
+                <li>
+                  <div *ngIf="userPurchased then download else buy"></div>
+                  <ng-template #buy>
+                    <div *ngIf="userPurchased == false then bought else pay"></div>
+                    <ng-template #bought><a (click)="createOrder()" class="btn-visit align-self-start">Buy Now</a></ng-template>
+                    <ng-template #pay><a (click)="paymentPage()" class="btn-visit align-self-start">Buy Now</a></ng-template>
+                  </ng-template>
+                  <ng-template #download><h4 style="color: green;">Already purchased!</h4><a routerLink="/dashboard/orders">view orders</a></ng-template>
+                </li>
+               <!--  <li *ngIf="interest == false">
+                  <a (click)="changeInterest()" class="btn-visit align-self-start">I am Interested</a>
+                </li> -->
+                <li #interestElement></li>
+              </ul>
+            </div>
+            <!-- <div *ngIf="interest">
+              <app-intrested-form *ngIf="Data" [Data]="Data" [submitButton]="submitButton" (sendRes)="receiveRes($event)" [err]="cus_err"></app-intrested-form>
+            </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section><!-- End Portfolio Details Section -->
+</main><!-- End #main -->

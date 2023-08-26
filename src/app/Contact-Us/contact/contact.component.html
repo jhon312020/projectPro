@@ -1,0 +1,104 @@
+<!-- ======= Contact Section ======= -->
+<section id="contact" class="contact">
+  <div class="container" data-aos="fade-up">
+
+    <div class="section-header">
+      <h3>Contact Us</h3>
+    </div>
+
+    <div class="row gx-lg-0 gy-4">
+
+      <div class="col-lg-4">
+
+        <div class="info-container d-flex flex-column align-items-center justify-content-center">
+          <div class="info-item d-flex">
+            <i class="bi bi-geo-alt flex-shrink-0"></i>
+            <div>
+              <h4>Location:</h4>
+              <p [innerHTML]="contactAdmin.address"></p>
+            </div>
+          </div><!-- End Info Item -->
+
+          <div class="info-item d-flex">
+            <i class="bi bi-envelope flex-shrink-0"></i>
+            <div>
+              <h4>Email:</h4>
+              <p>{{contactAdmin.email}}</p>
+            </div>
+          </div><!-- End Info Item -->
+
+          <div class="info-item d-flex">
+            <i class="bi bi-phone flex-shrink-0"></i>
+            <div>
+              <h4>Call:</h4>
+              <p>{{contactAdmin.mobile_number}}</p>
+            </div>
+          </div><!-- End Info Item -->
+
+          <div class="info-item d-flex">
+            <i class="bi bi-clock flex-shrink-0"></i>
+            <div>
+              <h4>Open Hours:</h4>
+              <p>{{contactAdmin.open_hours}}</p>
+            </div>
+          </div><!-- End Info Item -->
+        </div>
+
+      </div>
+
+      <div class="col-lg-8">
+        <form [formGroup]="ContactForm" #contactForm="ngForm" (ngSubmit)="onSubmit();" class="php-email-form">
+          <div class="row">
+            <app-alert-msg></app-alert-msg>
+            <div class="col-md-6 form-group">
+              <input type="text" [ngClass]="formInfo['name'].invalid && (formInfo['name'].dirty || formInfo['name'].touched || submitted.status) ? 'is-invalid' : {'is-valid':formInfo['name'].valid}" formControlName="name" class="form-control" id="name" placeholder="Enter Your Name">
+              <div class="invalid-feedback">Name is required.</div>
+            </div>
+            <div class="col-md-6 form-group mt-3 mt-md-0">
+               <input type="text" [ngClass]="formInfo['email'].invalid && (formInfo['email'].dirty || formInfo['email'].touched || submitted.status) ? 'is-invalid' : {'is-valid':formInfo['email'].valid}" formControlName="email" class="form-control" id="email" placeholder="Enter Your Email">
+              <div *ngIf="formInfo['email'].invalid && (formInfo['email'].dirty || formInfo['email'].touched)" class="invalid-feedback">
+                <div *ngIf="formInfo['email'].errors?.['required']">
+                  Email is required!
+                </div>
+                <div *ngIf="formInfo['email'].errors?.['pattern']">
+                  Invalid Email!
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 form-group">
+              <input type="text" [ngClass]="formInfo['subject'].invalid && (formInfo['subject'].dirty || formInfo['subject'].touched || submitted.status) ? 'is-invalid' : {'is-valid':formInfo['subject'].valid}" formControlName="subject" class="form-control" id="subject" placeholder="Enter Your Subject">
+              <div class="invalid-feedback">Subject is required.</div>
+            </div>
+            <div class="col-md-6 form-group mt-3 mt-md-0">
+              <input type="text" [ngClass]="formInfo['mobile_number'].invalid && (formInfo['mobile_number'].dirty || formInfo['mobile_number'].touched || submitted.status) ? 'is-invalid' : {'is-valid':formInfo['mobile_number'].valid}" formControlName="mobile_number" class="form-control" id="mobile_number" placeholder="Enter Your Mobile Number">
+              <div *ngIf="formInfo['mobile_number'].invalid && (formInfo['mobile_number'].dirty || formInfo['mobile_number'].touched)" class="invalid-feedback">
+                <div *ngIf="formInfo['mobile_number'].errors?.['required']">
+                  Mobile Number is required.
+                </div>
+                <div *ngIf="formInfo['mobile_number'].errors?.['pattern']">
+                  Invalid Mobile Number!
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group mt-3">
+            <textarea class="form-control" formControlName="message" [ngClass]="formInfo['message'].invalid && (formInfo['message'].dirty || formInfo['message'].touched || submitted.status) ? 'is-invalid' : {'is-valid': formInfo['message'].valid}" id="message" placeholder="Enter Your Message" rows="7"></textarea>
+             <div class="invalid-feedback">Message required.</div>
+          </div>
+          <div class="my-3">
+            <!-- <div class="loading" >Loading</div>
+            <!-- <div class="error-message text-danger"></div>
+            <div class="sent-message text-success"></div> -->
+          </div>
+          <div class="text-center"><button type="submit" [disabled]="submitted.showLoader"><span class="button-loader" *ngIf="submitted.showLoader"></span>Submit</button></div>
+        </form>
+      </div><!-- End Contact Form -->
+
+    </div>
+
+  </div>
+</section>
+
+<!-- End Contact Section -->

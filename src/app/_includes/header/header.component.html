@@ -1,0 +1,111 @@
+  <!-- ======= Header ======= -->
+  <section id="topbar" class="topbar d-flex align-items-center">
+    <div class="container d-flex justify-content-center justify-content-md-between">
+      <div class="contact-info d-flex align-items-center">
+        <span>Welcome to IndiTechSoft!!!</span>
+      </div>
+      <div class="contact-info d-flex align-items-center">
+        <i class="bi bi-envelope d-flex align-items-center"><a href="mailto:info@indigeneous.co.in">{{contactAdmin.email}}</a></i>
+        <i class="bi bi-phone d-flex align-items-center ms-4"><span>{{contactAdmin.mobile_number}}</span></i>
+      </div>
+      <div class="social-links d-none d-md-flex align-items-center">
+        <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+        <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+        <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+        <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+      </div>
+    </div>
+  </section><!-- End Top Bar -->
+  <header id="header" class="header d-flex align-items-center">
+    <div>
+    </div>
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+      <a href="" class="logo d-flex align-items-center">
+        <img src="assets/img/logo.png" alt="">
+      </a>
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a routerLink="/">Home</a></li>
+          <!-- <li><a routerLink="/about" routerLinkActive="active">About Us</a></li> -->
+          <!-- <li><a routerLink="/services" routerLinkActive="active">Services</a></li> -->
+          <!-- <li><a routerLink="/team" routerLinkActive="active">Team</a></li> -->
+          <li class="dropdown"><a routerLink="/projects" routerLinkActive="active"  tooltips tooltip-template="tooltip"><span>Projects</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+            <ul *ngIf="gData.Category">
+              <li *ngFor="let cat of gData.Category;"><a [routerLink]="'/projects/' + cat.slug">{{cat.title}}</a></li>
+            </ul>
+          </li>
+          <li class="dropdown"><a routerLink="/mini-projects" routerLinkActive="active"><span>Mini Projects</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+            <ul *ngIf="gData.Category">
+              <li *ngFor="let cat of gData.Category;"><a [routerLink]="'/mini-projects/' + cat.slug">{{cat.title}}</a></li>
+            </ul>
+          </li>
+          <li class="dropdown"><a routerLink="/internships" routerLinkActive="active"><span>Internships</span></a>
+            <!-- <ul *ngIf="gData.Category">
+              <li *ngFor="let cat of gData.Category;"><a [routerLink]="'/internships/' + cat.slug">{{cat.title}}</a></li>
+            </ul> -->
+          </li>
+          <li class="dropdown"><a routerLink="/workshops" routerLinkActive="active"><span>Workshops</span></a>
+            <!-- <ul *ngIf="gData.Category">
+              <li *ngFor="let cat of gData.Category;"><a [routerLink]="'/workshops/' + cat.slug">{{cat.title}}</a></li>
+            </ul> -->
+          </li>
+          <li class="dropdown"><a routerLink="/trainings" routerLinkActive="active"><span>Trainings</span></a>
+            <!-- <ul *ngIf="gData.Category">
+              <li *ngFor="let cat of gData.Category;"><a [routerLink]="'/trainings/' + cat.slug">{{cat.title}}</a></li>
+            </ul> -->
+          </li>
+          <li><a routerLink="/blog" routerLinkActive="active">Blogs</a></li>
+          <li><a routerLink="/contact-us" routerLinkActive="active">Contact Us</a></li>
+        </ul>
+      </nav><!-- .navbar -->
+
+      <a href="" class="logo d-flex align-items-center">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <!-- <img src="assets/img/logo.png" alt=""> -->
+        
+        <div *ngIf="this.user; then account else login"></div>
+        <ng-template #login>
+          <h3>
+            <a routerLink="/login" style="justify-content:flex-end">
+              <!-- <i class="fa fa-sign-in fa-2x"></i> -->
+              Login/Register
+            </a>
+        </h3>
+        </ng-template>
+        <ng-template #account>
+          <h3>
+            <a [routerLink]="this.gData.AdminOrUser">
+              <i class="fa fa-user-circle-o"></i> Myaccount
+            </a>
+            <span>.</span>
+          </h3>
+      </ng-template>
+        
+      </a>
+      <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+      <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+    </div>
+  </header>
+  <!-- End Header -->
+
+  <!-- ======= Breadcrumbs ======= -->
+<div *ngIf="gData.Breadcrumbs.sub_div2.name" class="breadcrumbs">
+  <nav>
+    <div class="container">
+      <div class="row">
+        <div class="col-8">
+          <ol>
+            <li><a routerLink=""><i class="fa fa-home" aria-hidden="true"></i></a></li>
+            <li *ngIf="gData.Breadcrumbs.sub_div2.name"><a [routerLink]="gData.Breadcrumbs.sub_div2.route">{{gData.Breadcrumbs.sub_div2.name}}</a></li>
+            <li *ngIf="gData.Breadcrumbs.sub_div3.name && gData.Breadcrumbs.sub_div2.name"><a [routerLink]="gData.Breadcrumbs.sub_div3.route">{{gData.Breadcrumbs.sub_div3.name}}</a></li>
+          </ol>
+        </div>
+        <div *ngIf="this.user" class="col-4">
+          <div class="float-end">
+            <a [routerLink]="this.gData.AdminOrUser">Welcome {{this.welcomeName}}</a> | <a href="#" (click)="logout()">Logout</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</div><!-- End Breadcrumbs -->

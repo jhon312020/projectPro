@@ -1,0 +1,4 @@
+<app-alert-msg></app-alert-msg>
+<h3>Edit Account</h3>
+<p>Here you can update your personal information and manage your account settings. Please make any desired changes and click 'SAVE' to update your account.</p>
+<app-user-form *ngIf="Data" [Data]="Data" [Admin]="false" (sendRes)="receiveRes($event)" [err]="cus_err"></app-user-form>

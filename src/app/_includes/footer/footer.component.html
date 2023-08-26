@@ -1,0 +1,62 @@
+<!-- ======= Footer ======= -->
+<footer id="footer" class="footer">
+  <div class="container">
+    <div class="row gy-4">
+      <div class="col-lg-5 col-md-12 footer-info">
+        <a href="index.html" class="logo d-flex align-items-center">
+          <span>IndiTech Software Training and Solutions</span>
+        </a>
+        <p>
+          <span [innerHTML]="contactAdmin.address"></span><br/>
+          <strong>Phone: </strong>{{contactAdmin.mobile_number}}<br>
+          <strong>Email: </strong>{{contactAdmin.email}}<br>
+        </p>
+        
+      </div>
+      <div class="col-lg-2 col-6 footer-links">
+        <h4>Our Services</h4>
+        <ul>
+          <li><a href="#about">About us</a></li>
+          <li><a routerLink="/contact-us" routerLinkActive="active">Contact Us</a></li>
+          <li><a routerLink="">Home</a></li>
+          <li><a routerLink="/contact-us" routerLinkActive="active">Support</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-6 footer-links">
+        <h4>Information</h4>
+        <ul>
+          <li><a routerLink="cancellation-policy">Cancellation Policy</a></li>
+          <li><a routerLink="privacy-policy">Privacy policy</a></li>
+          <li><a routerLink="return-policy">Return policy</a></li>
+          <li><a routerLink="terms-and-conditions">Terms and Conditions</a></li>
+          <li><a routerLink="terms-of-use">Terms of Use</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
+        <h4>Social Media</h4>
+        <div class="social-links d-flex mt-4">
+          <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+          <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+          <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+          <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container mt-4">
+    <div class="copyright">
+      &copy; Copyright <strong><span>IndiTechSoft</span></strong>. All Rights Reserved
+    </div>
+    <div class="credits">
+      <!-- All the links in the footer should remain intact. -->
+      <!-- You can delete the links only if you purchased the pro version. -->
+      <!-- Licensing information: https://bootstrapmade.com/license/ -->
+      <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/impact-bootstrap-business-website-template/ -->
+      <!-- Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> -->
+    </div>
+  </div>
+</footer>
+<!-- End Footer -->
+<a (click)="scrollUp()" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+<div id="preloader"></div>

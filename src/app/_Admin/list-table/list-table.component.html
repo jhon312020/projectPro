@@ -1,0 +1,17 @@
+<table class="table table-striped table-hover">
+	<thead>
+		<tr>
+			<th scope="col" *ngFor="let thead of header">{{thead}}</th>
+			<th>Action</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr *ngFor="let tbody of body | paginate: { itemsPerPage: 10, currentPage: page }">
+			<td *ngFor="let td of tbody.dataArray">{{td}}</td>
+			<td>
+				<i class="fas fa-pencil-alt cus-table-edit" (click)="getResponse('edit', tbody.id)"></i>
+				<i class="fas fa-trash cus-table-delete" (click)="getResponse('delete', tbody.id)"></i>
+			</td>
+		</tr>
+	</tbody>
+</table>

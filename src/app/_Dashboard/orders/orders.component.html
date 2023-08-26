@@ -1,0 +1,44 @@
+<app-alert-msg></app-alert-msg>
+	<div class="row">
+	<div class="col-lg-12">
+		<p class='content-highlight'>
+			<strong>User Action Info:</strong> On confirmation of your payment receipt the <strong>Download</strong> button will be enabled. Once enabled, click on <strong>Download</strong> button to download your Project artifacts (.zip) file to your system. 
+		</p>
+    <p class='content-highlight'><strong>User Action Info:</strong> Click on <strong>Support</strong> button and request for Project Online Support. <strong>IndiTechSoft</strong> support Team will contact you and provide the required support. You can provide your feedback by clicking on <strong>Feedback</strong> button</p>
+  </div>
+</div>
+<table class="table">
+	<thead>
+		<tr>
+			<th scope="col">#</th>
+			<th scope="col">Project Name</th>
+			<th scope="col">Category</th>
+			<th scope="col">Payment Status</th>
+			<th scope="col" class="text-center">Action</th>
+		</tr>
+	</thead>
+	<tbody *ngIf="Data.length > 0 else emptydata">
+		<tr *ngFor="let project of Data;index as i;">
+			<th scope="row">{{i+1}}</th>
+			<td>{{project.title}}</td>
+			<td>{{project.category}}</td>
+			<td>{{project.payment}}</td>
+			<td>
+				<i [routerLink]="'/'+project.type+'s/'+project.cat_slug+'/'+project.slug" class="fa fa-eye icon-button"></i>
+				<i *ngIf="project.download_permission" (click)="downloadSrcCode(project.project_id, project.title, project.id)" class="fa fa-arrow-down icon-button"> Download</i> 
+				<!-- <button title="Downloadd" *ngIf="!project.download_permission && project.payment== 'success'" (click)="downloadRequest(project.id)" class="icon-button"><i class="fas fa-lock"></i> Downloaded</button> -->
+				<i class="fa fa-lock disabled" *ngIf="!project.download_permission && project.payment== 'success'"> Download</i> 
+				<i *ngIf="project.payment == 'success' && project.download_count > 0 " class="fa fa-ticket icon-button" aria-hidden="true" [routerLink]="'/dashboard/ticket/'+project.id"> Support</i>
+				<i *ngIf="!project.is_reviewed && project.payment == 'success' && project.download_count > 0 " [routerLink]="'/dashboard/review/'+project.id" class="fa fa-comment-o icon-button"> Feedback</i>
+				<i *ngIf="project.is_reviewed" (click)="getProjectReview(project.id)" class="fa fa-comments-o icon-button"> Feedback</i> 
+			</td>
+		</tr>
+	</tbody>
+	<ng-template #emptydata>
+		<tbody>
+			<tr>
+				<td colspan="5" class="text-center"><h6>Currently no records</h6></td>
+			</tr>
+		</tbody>
+	</ng-template>
+</table>

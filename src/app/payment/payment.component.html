@@ -1,0 +1,50 @@
+<section id="payment" class="contact">
+	<div class="container">
+	<div class="section-header" data-aos="fade-up">
+    <p class='content-highlight'><strong>User Action Info:</strong> Pay the Project price by scanning the displayed <strong>QR Code</strong>. On successful payment click on <strong>Payment Completed</strong> button.</p>
+  </div>
+	<div *ngIf="projectInformation" class="shadow mb-5 bg-body rounded">
+		<div class="text-center">
+			<h3 class="my-account">Pay by scanning QR Code</h3>
+		</div>
+		<div class="container pb-3">
+			<table class="table">
+				<thead>
+					<tr>
+						<th scope="col">#</th>
+						<th scope="col">Project Name</th>
+						<th scope="col">Category</th>
+						<th scope="col">Price</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th scope="row">1</th>
+						<td>{{projectInformation.title}}</td>
+						<td>{{projectInformation.cat_title}}</td>
+						<td>{{projectInformation.price}}</td>
+					</tr>
+				</tbody>
+			</table>
+			<div class="row">
+				<div class="col-sm-6 "></div>
+				<div class="col-sm-6 text-end">
+					<p>Price: {{projectInformation.price}}</p>
+					<p>Discount: {{projectInformation.discount}}%</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-6">
+					<p>Do you want to go back?</p>
+					<button [routerLink]="'/'+projectInformation.type+'s/'" class="btn btn-cus">Back</button>
+				</div>
+				<div class="col-sm-6 text-end"> 
+					<qrcode [qrdata]="upiLink" [width]="100" [errorCorrectionLevel]="'M'"></qrcode>
+					<p style="color: green;">Total: {{salePrice}}</p>
+					<button #paymentElement (click)="payment()" class="btn btn-cus"><span>Payment Completed</span></button>
+				</div>
+			</div>
+		</div>		
+	</div>
+	</div>
+</section>

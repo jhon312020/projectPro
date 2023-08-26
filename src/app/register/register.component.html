@@ -1,0 +1,110 @@
+<div class="container" data-aos="fade-up">
+  <div class="mt-3 row">
+		<div class="col-sm-10">
+			<h3>Register Account</h3>
+			<p>If you already have an account with us, please login at the <a routerLink="/login">login page.</a></p>
+			<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+				<h4>Your Personal Details</h4>
+				<hr/>
+				<div class="col-md-12 mb-4">
+					<label for="name" class="form-label">Name</label>
+					<input type="name" class="form-control" [ngClass]="f['name'].invalid && (f['name'].dirty || f['name'].touched) ? 'is-invalid' : {'is-valid': f['name'].valid}" id="name" formControlName="name" required>
+					<div *ngIf="f['name'].invalid && (f['name'].dirty || f['name'].touched)" class="invalid-feedback">
+						<div *ngIf="f['name'].errors?.['required']">
+							Name is required!
+						</div>
+						<div *ngIf="f['name'].errors?.['pattern']">
+							Invalid name!
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-12 mb-4">
+					<label for="email" class="form-label">Email</label>
+					<input type="email" class="form-control" [ngClass]="f['email'].invalid && (f['email'].dirty || f['email'].touched) ? 'is-invalid' : {'is-valid': f['email'].valid}" id="email" formControlName="email" (keyup)="this.err = undefined" required>
+					<div *ngIf="f['email'].invalid && (f['email'].dirty || f['email'].touched)" class="invalid-feedback">
+						<div *ngIf="f['email'].errors?.['required']">
+							Email is required!
+						</div>
+						<div *ngIf="f['email'].errors?.['pattern']">
+							Invalid email!
+						</div>
+					</div>
+					<div *ngIf="err" class="invalid-feedback">
+						{{err}}
+					</div>
+				</div>
+
+				<div class="col-md-12 mb-4">
+					<label for="mobile" class="form-label">Mobile</label>
+					<input type="mobile" formControlName="mobile"  class="form-control" [ngClass]="f['mobile'].invalid && (f['mobile'].dirty || f['mobile'].touched) ? 'is-invalid' : {'is-valid': f['mobile'].valid}" id="mobile" required>
+					<div *ngIf="f['mobile'].invalid && (f['mobile'].dirty || f['mobile'].touched)" class="invalid-feedback">
+						<div *ngIf="f['mobile'].errors?.['required']">
+							Mobile is required!
+						</div>
+						<div *ngIf="f['mobile'].errors?.['pattern']">
+							Invalid mobile number!
+						</div>
+					</div>
+				</div>
+
+				<h4>Your Password</h4>
+							<hr>
+				<div class="col-md-12 mb-4">
+					<label for="password" class="form-label">Password</label>
+					<input type="password" formControlName="password"  class="form-control" [ngClass]="f['password'].invalid && (f['password'].dirty || f['password'].touched) ? 'is-invalid' : {'is-valid': f['password'].valid}" id="password" required>
+					<div *ngIf="f['password'].invalid && (f['password'].dirty || f['password'].touched)" class="invalid-feedback">
+						<div *ngIf="f['password'].errors?.['required']">
+							Password is required!
+						</div>
+						<div *ngIf="f['password'].errors?.['minlength']">
+							Invalid password! Password must be 6 characters above!
+						</div>
+						<div *ngIf="f['password'].errors?.['maxlength']">
+							Invalid password! Password must be 20 characters belove!
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-12 mb-4">
+					<label for="confirm_password" class="form-label">Confirm Password</label>
+					<input type="password" formControlName="confirm_password"  class="form-control" [ngClass]="f['confirm_password'].invalid && (f['confirm_password'].dirty || f['confirm_password'].touched) ? 'is-invalid' : {'is-valid': f['confirm_password'].valid}" id="confirm_password" required>
+					<div *ngIf="f['confirm_password'].invalid && (f['confirm_password'].dirty || f['confirm_password'].touched)" class="invalid-feedback">
+						<div *ngIf="f['confirm_password'].errors?.['required']">
+							Confirm Password is required!
+						</div>
+						<div *ngIf="f['confirm_password'].errors?.['match']">
+							Password not match!
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-12">
+					<div class="form-check">
+						<input class="form-check-input" formControlName="checkbox" [ngClass]="{'is-invalid' : f['checkbox'].invalid }" type="checkbox" value="" id="invalidCheck3" aria-describedby="invalidCheck3Feedback" required>
+						<label class="form-check-label" for="invalidCheck3">
+							I have read and agree to the <a href="">Privacy Policy</a>
+						</label>
+						<div id="invalidCheck3Feedback" class="invalid-feedback">
+							You must agree before submitting.
+						</div>
+					</div>
+				</div>
+				<div class='col-md-12'>
+					<re-captcha
+		        formControlName="recaptchaReactive"
+		        (resolved)="addTokenLog('Reactive form mode resolved', $event)"
+		      >
+		      </re-captcha>
+				</div>
+
+				<div class="col-md-12 mb-4">
+					<div class="text-center">
+						<input type="submit" [disabled]="!registerForm.valid || err" value="REGISTER" name="register" class="btn btn-cus">
+					</div>
+				</div>
+			</form>
+		</div>
+		<app-sidebar class="col-sm-2"></app-sidebar>
+  </div>
+</div>
