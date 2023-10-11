@@ -61,7 +61,7 @@ const routes: Routes = [
   // {path:"about", title: "About Us", component: AboutComponent},
   {path:"services", title: "Service", component: ServiceComponent},
   // {path: "team", title: "Team", component: TeamComponent},
-  {path: "blog", title: "Blog", component: BlogsComponent},
+  {path: "blog", title: "Blogs", component: BlogsComponent},
   {path: "blog/:slug", title: "Blog Details", component: BlogDetailsComponent},
   {path: "contact-us", title: "Contact Us", component:ContactComponent},
   {path: "login", title: "Login", component:LoginComponent},

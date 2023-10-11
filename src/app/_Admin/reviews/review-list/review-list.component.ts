@@ -49,8 +49,8 @@ export class ReviewListComponent implements OnInit {
       if(res.status) {
         Swal.fire({
           icon: 'success',
-          title: 'Review Approval',
-          text: "Review Approved!",
+          title: 'Feedback Approval',
+          text: "Feedback Approved!",
         }).then((result) => {
           this.getProjectReviewList(this.report, this.pagination.page, this.pagination.itemsPerPage);
         })
@@ -68,8 +68,8 @@ export class ReviewListComponent implements OnInit {
       if (res.status) {
         Swal.fire({
           icon: 'warning',
-          title: 'Review Disapproval',
-          text: "Review Disapproved!",
+          title: 'Feedback Disapproval',
+          text: "Feedback Disapproved!",
         }).then((result) => {
           this.getProjectReviewList(this.report, this.pagination.page, this.pagination.itemsPerPage);
         })

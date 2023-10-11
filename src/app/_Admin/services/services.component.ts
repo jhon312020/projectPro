@@ -24,7 +24,7 @@ export class ServicesComponent implements OnInit {
   ngOnInit(): void {
     this.ReportData = this.report = this.gData.report;
     this.gData.Breadcrumbs.sub_div3.name = "Enquiry Requests";
-    this.gData.Breadcrumbs.sub_div3.route = "/admin/service";
+    this.gData.Breadcrumbs.sub_div3.route = "/admin/services";
     this.getServiceList(this.report, this.pagination.page, this.pagination.itemsPerPage);
   }
 

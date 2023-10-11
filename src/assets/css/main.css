@@ -3028,7 +3028,7 @@ section {
   position: relative;
 }
 
-.form-heading h3:after {
+/*.form-heading h3:after {
   content: "";
   position: absolute;
   display: block;
@@ -3037,7 +3037,7 @@ section {
   background: var(--color-primary);
   left: 0;
   bottom: 0;
-}
+}*/
 
 .icon-button {
   border: 1px solid var(--color-primary);
