@@ -1,0 +1,67 @@
+<form [formGroup]="TestimonialForm" (ngSubmit)="onSubmit()" action="">
+	<div class="mb-3 row">
+		<div class="col-sm-6">
+			<div class="mb-3">
+				<label for="name" class="form-label">Name</label>
+				<input type="text" [ngClass]="formData['name'].invalid && (formData['name'].dirty || formData['name'].touched || submitted.status) ? 'is-invalid' : {'is-valid':formData['name'].valid}" formControlName="name" class="form-control" id="name" placeholder="Enter Name">
+				<div class="invalid-feedback">Name is required.</div>
+			</div>
+			<div class="mb-2">
+				<label for="message" class="form-label">Message</label>
+				<textarea class="form-control" [ngClass]="formData['message'].invalid && (formData['message'].dirty || formData['message'].touched || submitted.status) ? 'is-invalid' : {'is-valid':formData['message'].valid}" formControlName="message" id="message" rows="3"></textarea>
+				<div class="invalid-feedback">Message is required.</div>
+			</div>
+			
+			<div class="mb-3">
+				<label for="img" class="form-label">Picture</label>
+				<input type="file" #ImgInput (change)="onChangeInChoosefile($event)" [ngClass]="img_err.status ? 'is-invalid' : {'is-valid': img_err.status == false}" formControlName="img" class="form-control" id="img">
+				<div class="invalid-feedback">{{img_err.msg}}</div>
+				<div class="valid-feedback">Ready to upload</div>
+			</div>
+		</div>
+
+		<div class="col-sm-6">			
+			<div class="row" >
+			<div class="col-md-12 mb-4">
+				<div for="rating" class="form-label mb-0">Rating</div>
+				<div class="rate" [ngClass]="formData['rating'].invalid && (formData['rating'].dirty || formData['rating'].touched || submitted.status) ? 'is-invalid' : {'is-valid': formData['rating'].valid}">
+			    <input type="radio" id="star5" formControlName="rating"  value="5" />
+			    <label for="star5" title="text">5 stars</label>
+			    <input type="radio" id="star4" formControlName="rating" value="4" />
+			    <label for="star4" title="text">4 stars</label>
+			    <input type="radio" id="star3" formControlName="rating" value="3" />
+			    <label for="star3" title="text">3 stars</label>
+			    <input type="radio" id="star2" formControlName="rating" value="2" />
+			    <label for="star2" title="text">2 stars</label>
+			    <input type="radio" id="star1" formControlName="rating" value="1"  />
+			    <label for="star1" title="text">1 star</label>
+			  </div>
+			  <div class="invalid-feedback clear">Rating required.</div>
+			</div>
+		</div>
+			<div class="mb-3">
+        <label for="status" class="form-label">Approved</label>
+				<tr>
+					<td>
+						<label class="form-check-label" for="flexSwitchCheckChecked">Inactive</label>
+					</td>
+					<td class="form-check form-switch cus-switch">
+						<input formControlName="admin_approval" class="form-check-input cus-check-input"  type="checkbox" id="flexSwitchCheckChecked" checked>
+					</td>
+					<td>
+						<label class="form-check-label" for="flexSwitchCheckChecked">Active</label>
+					</td>
+				</tr>
+			</div>
+
+			<div class="mb-3 cus-img" *ngIf="img_src">
+				<div class="cus-del-iconImg" (click)="removeImg()"><i class="far fa-trash-alt"></i></div>
+				<div><img [src]="img_src | safeResourceUrl" alt="img loading ..." class="img-thumbnail cus-img-100"></div>
+			</div>
+		</div>
+	</div>
+	<div id="editor" class="mb-3"></div>
+	<div class=" text-center">
+		<input type="submit" class="btn btn-cus" value="Submit">
+	</div>
+</form>

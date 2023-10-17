@@ -1,0 +1,6 @@
+<div class="shadow cus-table mb-4">
+  <div class="form-heading">
+    <h3>{{Heading}}</h3>
+  </div>
+  <app-testimonial-form *ngIf="data" [Data]="data" (sendRes)="receiveRes($event)"></app-testimonial-form>
+</div>

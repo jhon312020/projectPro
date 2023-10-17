@@ -74,7 +74,7 @@ export class HomePageComponent implements OnInit {
     //    this.latestProjectsContainer.nativeElement.initialize();
     // })
 
-   const swiperTestimonialsParams = {
+    const swiperTestimonialsParams = {
       speed: 600,
       loop: true,
       autoplay: {

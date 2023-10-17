@@ -281,6 +281,27 @@ export class ApiService {
     return this.http.put(this.url+'deleteBlog/'+id, this.data);
   }
 
+  // Testimonials api
+  getTestimonials(token: string):any {
+    return this.http.get(this.url+'getTestimonials'+this.Tokens+token);
+  }
+
+  createTestimonial(data: any):any {
+    data.append("appToken", this.appToken);
+    return this.http.post(this.url+"addTestimonial", data);
+  }
+  getTestimonialById(id:number, token: string):any {
+    return this.http.get(this.url+"getTestimonial/"+id+this.Tokens+token);
+  }
+  updateTestimonial(data:any):any {
+    data.append("appToken", this.appToken);
+    return this.http.post(this.url+"updateTestimonial", data);
+  }
+  deleteTestimonial(data: {id: number, appToken?:string}):any {
+    data.appToken = this.appToken;
+    return this.http.put(this.url+"deleteTestimonial",data);
+  }
+  
   // src file download
   getSourceFile(id:number, token: string, orderId: number) {
     this.data.userToken = token;

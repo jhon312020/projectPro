@@ -12,7 +12,11 @@
 		</thead>
 		<tbody *ngIf="Data !== undefined && Data.length > 0 else emptydata">
 			<tr *ngFor="let tbody of Data | paginate: { itemsPerPage: 10, currentPage: page }">
-				<td *ngFor="let td of tbody.dataArray">{{td}}</td>
+				<td *ngFor="let td of tbody.dataArray">
+				<span *ngIf="isObject(td);then content else other_content">here is ignored</span>
+					<ng-template #content><span class="review-star" [innerHTML]="td.star" width="10%"></span></ng-template>
+					<ng-template #other_content>{{td}}</ng-template>
+				</td>
 				<td>
 					<i class="fas fa-pencil-alt icon-button" (click)="actionTrigger({id: tbody.id, action: 'edit'})"></i>
 					<i class="fas fa-trash cus-table-delete" (click)="actionTrigger({id: tbody.id, action: 'delete'})"></i>

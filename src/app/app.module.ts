@@ -95,6 +95,10 @@ import { ReviewListComponent } from './_Admin/reviews/review-list/review-list.co
 import { TicketListComponent } from './_Admin/Tickets/ticket-list/ticket-list.component';
 
 import { environment } from 'src/environments/environment';
+import { TestimonialsComponent } from './testimonials/testimonials.component';
+import { TestimonialListComponent } from './_Admin/Testimonial/testimonial-list/testimonial-list.component';
+import { TestimonialFormComponent } from './_Admin/Testimonial/testimonial-form/testimonial-form.component';
+import { TestimonialCreateComponent } from './_Admin/Testimonial/testimonial-create/testimonial-create.component';
 
 @NgModule({
   declarations: [
@@ -170,6 +174,10 @@ import { environment } from 'src/environments/environment';
     CancellationPolicyComponent,
     TermsOfUseComponent,
     TermsAndConditionsComponent,
+    TestimonialsComponent,
+    TestimonialListComponent,
+    TestimonialFormComponent,
+    TestimonialCreateComponent,
   ],
   imports: [
     BrowserModule,

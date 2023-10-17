@@ -45,7 +45,8 @@ import { ServicesComponent } from './_Admin/services/services.component';
 import { ReportsComponent } from './_Admin/reports/reports.component';
 import { ReviewListComponent } from './_Admin/reviews/review-list/review-list.component';
 import { TicketListComponent } from './_Admin/Tickets/ticket-list/ticket-list.component';
-
+import { TestimonialListComponent } from './_Admin/Testimonial/testimonial-list/testimonial-list.component';
+import { TestimonialCreateComponent } from './_Admin/Testimonial/testimonial-create/testimonial-create.component';
 
 import { ChangepasswordComponent } from './_Dashboard/changepassword/changepassword.component';
 import { DashContentComponent } from './_Dashboard/dash-content/dash-content.component';
@@ -120,6 +121,9 @@ const routes: Routes = [
     {path: 'reports', title: "Reports", component:ReportsComponent},
     {path: 'reviews', title: "Reviews", component:ReviewListComponent},
     {path: 'ticket/list', title: "Tickets", component:TicketListComponent},
+    {path: 'testimonial/list', title: "Testimonials", component:TestimonialListComponent},
+    {path: 'testimonial/create', title: "Create Testimonial", component:TestimonialCreateComponent},
+    {path: 'testimonial/edit/:id', title: "Edit Testimonial", component:TestimonialCreateComponent},
 
   ]},
   {path: "**", title: "NOT FOUND", component:NotFoundComponent}

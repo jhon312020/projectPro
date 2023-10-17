@@ -168,6 +168,16 @@ export interface ticket {
   message: string,
 }
 
+export interface Testimonial {
+  id?: number,
+  name: string,
+  rating: string,
+  img: any,
+  message: string,
+  created_at?: string,
+  admin_approval: boolean
+}
+
 export interface UPI {
   pa: string,
   pn: string,

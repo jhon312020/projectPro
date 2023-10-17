@@ -1,0 +1,36 @@
+<!-- ======= Testimonials Section ======= -->
+  <section id="testimonials" class="testimonials">
+      <div class="container" data-aos="fade-up">
+        <div class="section-header">
+          <h2>Testimonials</h2>
+          <p>What our students and clients tell about us</p>
+        </div>
+        <swiper-container init="false" class="testimonials" loop="true" data-aos="fade-up" data-aos-delay="100" #testimonialSlides pagination="true">
+          <swiper-slide *ngFor="let testimonial of Testimonials; let i = index" class="swiper-slide">
+            <div>
+              <div class="testimonial-wrap">
+                <div class="testimonial-item">
+                  <div class="d-flex align-items-center">
+                    <img src="assets/img/testimonials/testimonials-{{i + 1}}.jpg" class="testimonial-img flex-shrink-0" alt="">
+                    <div>
+                      <h3>{{testimonial.name}}</h3>
+                      <h4>Student</h4>
+                      <div class="stars">
+                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <p>
+                    <i class="bi bi-quote quote-icon-left"></i>
+                    {{testimonial.message}}
+                    <i class="bi bi-quote quote-icon-right"></i>
+                  </p>
+                </div>
+              </div>
+            </div><!-- End testimonial item -->
+          </swiper-slide>
+        </swiper-container>
+        <div class="swiper-pagination" id="testimonialPagination"></div>
+      </div>
+  </section>
+<!-- End Testimonials Section -->

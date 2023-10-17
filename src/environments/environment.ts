@@ -28,8 +28,8 @@
 
 export const environment = {
   production: true,
-  backend: "http://stage.codecygnus.com/ProjectPro/backend/public/",
-  // backend: "http://127.0.0.1:8000/",
+  // backend: "http://stage.codecygnus.com/ProjectPro/backend/public/",
+  backend: "http://127.0.0.1:8000/",
   apptoken: "sampleSketch2401*9003954!_valid",
   address: "#165, 8th Cross, CIL Layout, RT Nagar PO, <br/> Bangalore-560032",
   email: "info@inditechsoft.com",

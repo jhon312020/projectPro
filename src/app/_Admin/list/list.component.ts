@@ -45,4 +45,8 @@ export class ListComponent implements OnInit {
   actionTrigger(res: any) {
     this.sendRes.emit(res) ;
   }
+
+  isObject(val:any) {
+    return (typeof val === 'object');
+  }
 }
